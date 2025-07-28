@@ -85,6 +85,15 @@ public void sortable() {
 	
      }
    System.out.println("sorted");
+   driver.switchTo().defaultContent();
+	
+}
+public void slider() {
+	driver.findElement(By.xpath("//a[text()=\"Slider\"]")).click();
+	WebElement	Frames = driver.findElement(By.xpath("//div[@id=\"content\"]//descendant::iframe"));
+	driver.switchTo().frame(Frames);
+	WebElement sliderBTN = driver.findElement(By.xpath("//div[@id=\"slider\"]//span"));
+	obj.dragAndDropBy(sliderBTN, 250, 12).perform();
 	
 }
 
@@ -95,7 +104,7 @@ public void sortable() {
 		obj1.dragAndDrop();
 		obj1.resizable();
 		obj1.scrollAndSelect();
-		obj1.sortable();
+		obj1.slider();
 		
          }
 
