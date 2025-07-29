@@ -97,6 +97,12 @@ public void slider() {
 	
 }
 
+public int multiply(int a,  int b) {
+	
+	return a* b;
+	
+}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ActionClass obj1 = new ActionClass();
@@ -105,6 +111,7 @@ public void slider() {
 		obj1.resizable();
 		obj1.scrollAndSelect();
 		obj1.slider();
+		System.out.println(obj1.multiply(10,20));
 		
          }
 
