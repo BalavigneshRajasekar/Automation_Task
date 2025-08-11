@@ -2,6 +2,7 @@ package learnAutomation;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -64,9 +65,11 @@ public class WebTables {
 	}
 
 	public void screenshot() {
+		String s_sName = new Date().toString().replace(" ", "_").replace(":", "-");
+		System.out.println(s_sName);
 		File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(screenshotFile, new File(".//screenshots/shot.png"));
+			FileUtils.copyFile(screenshotFile, new File(".//screenshots/" + s_sName + ".png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error" + e);
@@ -80,7 +83,7 @@ public class WebTables {
 		WebTables tables = new WebTables();
 		tables.setup();
 //		tables.dynamicTable();
-		tables.javascriptExecutor();
+//		tables.javascriptExecutor();
 		tables.screenshot();
 
 	}
