@@ -1,9 +1,13 @@
 package learnAutomation;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -78,13 +82,36 @@ public class WebTables {
 
 	}
 
-	public static void main(String[] args) {
+	public void readAndWriteFile() throws IOException {
+		try {
+			FileInputStream Io = new FileInputStream(
+					"C:\\Coding\\Automation\\Automation_Task\\src\\main\\resources\\testData\\data.properties");
+			Properties obj = new Properties();
+			obj.load(Io);
+			System.out.println(obj.getProperty("Url"));
+
+			FileOutputStream Op = new FileOutputStream(
+					"C:\\\\Coding\\\\Automation\\\\Automation_Task\\\\src\\\\main\\\\resources\\\\testData\\\\data.properties");
+
+			obj.setProperty("Browser", "Chrome");
+
+			obj.store(Op, "Browser we need to test");
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void main(String[] args) throws IOException {
 
 		WebTables tables = new WebTables();
 		tables.setup();
 //		tables.dynamicTable();
 //		tables.javascriptExecutor();
-		tables.screenshot();
+//		tables.screenshot();
+		tables.readAndWriteFile();
 
 	}
 
